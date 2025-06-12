@@ -1,0 +1,29 @@
+[project]
+name = "ohsu-glucose"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.3",
+    "numpy>=2.3.0",
+    "polars[pyarrow]>=1.30.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.13",
+]
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+preview = true
+select = ["I", "F", "E", "W", "PL", "PT", "N", "FURB", "FAST", "RUF", "ARG", "PTH"]
+ignore = ["PLR", "N802", "N803", "N806"]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+preview = true
+quote-style = "double"
