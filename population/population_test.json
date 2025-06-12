@@ -1,0 +1,1192 @@
+[
+    {
+        "params": {
+            "weight": 77,
+            "mmol_L_to_mg_dL": 18,
+            "mg_dL_to_mmol_L": 0.05555555555555555,
+            "g_to_mmol": 5.555555555555555,
+            "mU_kg_min_to_U_h": 4.62,
+            "t_max_I": 55,
+            "V_I": 0.12,
+            "k_e": 0.138,
+            "k_a1": 0.006,
+            "k_a2": 0.06,
+            "k_a3": 0.03,
+            "S_f1": 0.0018109469117664455,
+            "S_f2": 0.0004008127763837341,
+            "S_f3": 0.021550063962023344,
+            "k_12": 0.066,
+            "F_01": 0.0097,
+            "EGP_0": 0.0161,
+            "A_G": 0.8,
+            "t_max_G": 40,
+            "V_G": 0.16
+        },
+        "meals": [
+            {
+                "day": 1,
+                "hour": 8,
+                "grams": 26
+            },
+            {
+                "day": 1,
+                "hour": 13,
+                "grams": 62
+            },
+            {
+                "day": 1,
+                "hour": 21,
+                "grams": 50
+            },
+            {
+                "day": 2,
+                "hour": 8,
+                "grams": 26
+            },
+            {
+                "day": 2,
+                "hour": 13,
+                "grams": 46
+            },
+            {
+                "day": 2,
+                "hour": 18,
+                "grams": 46
+            },
+            {
+                "day": 3,
+                "hour": 6,
+                "grams": 29
+            },
+            {
+                "day": 3,
+                "hour": 14,
+                "grams": 68
+            },
+            {
+                "day": 3,
+                "hour": 19,
+                "grams": 43
+            },
+            {
+                "day": 4,
+                "hour": 6,
+                "grams": 23
+            },
+            {
+                "day": 4,
+                "hour": 13,
+                "grams": 49
+            },
+            {
+                "day": 4,
+                "hour": 18,
+                "grams": 45
+            },
+            {
+                "day": 5,
+                "hour": 6,
+                "grams": 26
+            },
+            {
+                "day": 5,
+                "hour": 14,
+                "grams": 45
+            },
+            {
+                "day": 5,
+                "hour": 21,
+                "grams": 48
+            },
+            {
+                "day": 6,
+                "hour": 6,
+                "grams": 44
+            },
+            {
+                "day": 6,
+                "hour": 14,
+                "grams": 52
+            },
+            {
+                "day": 6,
+                "hour": 19,
+                "grams": 38
+            },
+            {
+                "day": 7,
+                "hour": 7,
+                "grams": 45
+            },
+            {
+                "day": 7,
+                "hour": 14,
+                "grams": 59
+            },
+            {
+                "day": 7,
+                "hour": 19,
+                "grams": 40
+            },
+            {
+                "day": 8,
+                "hour": 8,
+                "grams": 45
+            },
+            {
+                "day": 8,
+                "hour": 13,
+                "grams": 62
+            },
+            {
+                "day": 8,
+                "hour": 18,
+                "grams": 47
+            },
+            {
+                "day": 9,
+                "hour": 7,
+                "grams": 20
+            },
+            {
+                "day": 9,
+                "hour": 13,
+                "grams": 59
+            },
+            {
+                "day": 9,
+                "hour": 19,
+                "grams": 33
+            },
+            {
+                "day": 10,
+                "hour": 6,
+                "grams": 34
+            },
+            {
+                "day": 10,
+                "hour": 13,
+                "grams": 60
+            },
+            {
+                "day": 10,
+                "hour": 20,
+                "grams": 33
+            }
+        ],
+        "exercises": [
+            {
+                "day": 1,
+                "hour": 20,
+                "p_vo2_max": 54,
+                "duration": 46
+            },
+            {
+                "day": 2,
+                "hour": 19,
+                "p_vo2_max": 52,
+                "duration": 46
+            },
+            {
+                "day": 3,
+                "hour": 20,
+                "p_vo2_max": 60,
+                "duration": 58
+            },
+            {
+                "day": 4,
+                "hour": 20,
+                "p_vo2_max": 59,
+                "duration": 57
+            },
+            {
+                "day": 5,
+                "hour": 20,
+                "p_vo2_max": 56,
+                "duration": 34
+            },
+            {
+                "day": 6,
+                "hour": 13,
+                "p_vo2_max": 58,
+                "duration": 60
+            },
+            {
+                "day": 7,
+                "hour": 7,
+                "p_vo2_max": 67,
+                "duration": 43
+            },
+            {
+                "day": 8,
+                "hour": 7,
+                "p_vo2_max": 55,
+                "duration": 34
+            },
+            {
+                "day": 9,
+                "hour": 7,
+                "p_vo2_max": 49,
+                "duration": 44
+            },
+            {
+                "day": 10,
+                "hour": 13,
+                "p_vo2_max": 47,
+                "duration": 40
+            }
+        ]
+    },
+    {
+        "params": {
+            "weight": 78,
+            "mmol_L_to_mg_dL": 18,
+            "mg_dL_to_mmol_L": 0.05555555555555555,
+            "g_to_mmol": 5.555555555555555,
+            "mU_kg_min_to_U_h": 4.68,
+            "t_max_I": 55,
+            "V_I": 0.12,
+            "k_e": 0.138,
+            "k_a1": 0.006,
+            "k_a2": 0.06,
+            "k_a3": 0.03,
+            "S_f1": 0.0017293288777754366,
+            "S_f2": 0.0003053386483559774,
+            "S_f3": 0.021699760433066814,
+            "k_12": 0.066,
+            "F_01": 0.0097,
+            "EGP_0": 0.0161,
+            "A_G": 0.8,
+            "t_max_G": 40,
+            "V_G": 0.16
+        },
+        "meals": [
+            {
+                "day": 1,
+                "hour": 7,
+                "grams": 19
+            },
+            {
+                "day": 1,
+                "hour": 13,
+                "grams": 75
+            },
+            {
+                "day": 1,
+                "hour": 19,
+                "grams": 50
+            },
+            {
+                "day": 2,
+                "hour": 6,
+                "grams": 32
+            },
+            {
+                "day": 2,
+                "hour": 12,
+                "grams": 49
+            },
+            {
+                "day": 2,
+                "hour": 20,
+                "grams": 38
+            },
+            {
+                "day": 3,
+                "hour": 7,
+                "grams": 26
+            },
+            {
+                "day": 3,
+                "hour": 12,
+                "grams": 35
+            },
+            {
+                "day": 3,
+                "hour": 20,
+                "grams": 36
+            },
+            {
+                "day": 4,
+                "hour": 7,
+                "grams": 25
+            },
+            {
+                "day": 4,
+                "hour": 13,
+                "grams": 45
+            },
+            {
+                "day": 4,
+                "hour": 18,
+                "grams": 53
+            },
+            {
+                "day": 5,
+                "hour": 7,
+                "grams": 37
+            },
+            {
+                "day": 5,
+                "hour": 13,
+                "grams": 70
+            },
+            {
+                "day": 5,
+                "hour": 18,
+                "grams": 42
+            },
+            {
+                "day": 6,
+                "hour": 7,
+                "grams": 28
+            },
+            {
+                "day": 6,
+                "hour": 12,
+                "grams": 36
+            },
+            {
+                "day": 6,
+                "hour": 20,
+                "grams": 29
+            },
+            {
+                "day": 7,
+                "hour": 6,
+                "grams": 40
+            },
+            {
+                "day": 7,
+                "hour": 14,
+                "grams": 55
+            },
+            {
+                "day": 7,
+                "hour": 19,
+                "grams": 33
+            },
+            {
+                "day": 8,
+                "hour": 7,
+                "grams": 19
+            },
+            {
+                "day": 8,
+                "hour": 12,
+                "grams": 81
+            },
+            {
+                "day": 8,
+                "hour": 19,
+                "grams": 39
+            },
+            {
+                "day": 9,
+                "hour": 6,
+                "grams": 34
+            },
+            {
+                "day": 9,
+                "hour": 13,
+                "grams": 37
+            },
+            {
+                "day": 9,
+                "hour": 20,
+                "grams": 43
+            },
+            {
+                "day": 10,
+                "hour": 6,
+                "grams": 31
+            },
+            {
+                "day": 10,
+                "hour": 12,
+                "grams": 58
+            },
+            {
+                "day": 10,
+                "hour": 20,
+                "grams": 43
+            }
+        ],
+        "exercises": [
+            {
+                "day": 1,
+                "hour": 20,
+                "p_vo2_max": 71,
+                "duration": 41
+            },
+            {
+                "day": 2,
+                "hour": 19,
+                "p_vo2_max": 68,
+                "duration": 45
+            },
+            {
+                "day": 3,
+                "hour": 11,
+                "p_vo2_max": 63,
+                "duration": 30
+            },
+            {
+                "day": 4,
+                "hour": 12,
+                "p_vo2_max": 54,
+                "duration": 58
+            },
+            {
+                "day": 5,
+                "hour": 18,
+                "p_vo2_max": 63,
+                "duration": 50
+            },
+            {
+                "day": 6,
+                "hour": 19,
+                "p_vo2_max": 61,
+                "duration": 46
+            },
+            {
+                "day": 7,
+                "hour": 20,
+                "p_vo2_max": 54,
+                "duration": 39
+            },
+            {
+                "day": 8,
+                "hour": 6,
+                "p_vo2_max": 47,
+                "duration": 34
+            },
+            {
+                "day": 9,
+                "hour": 7,
+                "p_vo2_max": 61,
+                "duration": 36
+            },
+            {
+                "day": 10,
+                "hour": 6,
+                "p_vo2_max": 67,
+                "duration": 38
+            }
+        ]
+    },
+    {
+        "params": {
+            "weight": 73,
+            "mmol_L_to_mg_dL": 18,
+            "mg_dL_to_mmol_L": 0.05555555555555555,
+            "g_to_mmol": 5.555555555555555,
+            "mU_kg_min_to_U_h": 4.38,
+            "t_max_I": 55,
+            "V_I": 0.12,
+            "k_e": 0.138,
+            "k_a1": 0.006,
+            "k_a2": 0.06,
+            "k_a3": 0.03,
+            "S_f1": 0.0022930313296138476,
+            "S_f2": 0.00038260549442756654,
+            "S_f3": 0.021719816511628708,
+            "k_12": 0.066,
+            "F_01": 0.0097,
+            "EGP_0": 0.0161,
+            "A_G": 0.8,
+            "t_max_G": 40,
+            "V_G": 0.16
+        },
+        "meals": [
+            {
+                "day": 1,
+                "hour": 7,
+                "grams": 24
+            },
+            {
+                "day": 1,
+                "hour": 13,
+                "grams": 73
+            },
+            {
+                "day": 1,
+                "hour": 19,
+                "grams": 31
+            },
+            {
+                "day": 2,
+                "hour": 7,
+                "grams": 48
+            },
+            {
+                "day": 2,
+                "hour": 14,
+                "grams": 64
+            },
+            {
+                "day": 2,
+                "hour": 20,
+                "grams": 52
+            },
+            {
+                "day": 3,
+                "hour": 6,
+                "grams": 28
+            },
+            {
+                "day": 3,
+                "hour": 14,
+                "grams": 49
+            },
+            {
+                "day": 3,
+                "hour": 18,
+                "grams": 51
+            },
+            {
+                "day": 4,
+                "hour": 7,
+                "grams": 20
+            },
+            {
+                "day": 4,
+                "hour": 12,
+                "grams": 66
+            },
+            {
+                "day": 4,
+                "hour": 19,
+                "grams": 41
+            },
+            {
+                "day": 5,
+                "hour": 7,
+                "grams": 23
+            },
+            {
+                "day": 5,
+                "hour": 13,
+                "grams": 41
+            },
+            {
+                "day": 5,
+                "hour": 19,
+                "grams": 45
+            },
+            {
+                "day": 6,
+                "hour": 8,
+                "grams": 32
+            },
+            {
+                "day": 6,
+                "hour": 13,
+                "grams": 47
+            },
+            {
+                "day": 6,
+                "hour": 19,
+                "grams": 30
+            },
+            {
+                "day": 7,
+                "hour": 6,
+                "grams": 36
+            },
+            {
+                "day": 7,
+                "hour": 12,
+                "grams": 68
+            },
+            {
+                "day": 7,
+                "hour": 20,
+                "grams": 27
+            },
+            {
+                "day": 8,
+                "hour": 8,
+                "grams": 39
+            },
+            {
+                "day": 8,
+                "hour": 12,
+                "grams": 57
+            },
+            {
+                "day": 8,
+                "hour": 19,
+                "grams": 36
+            },
+            {
+                "day": 9,
+                "hour": 7,
+                "grams": 46
+            },
+            {
+                "day": 9,
+                "hour": 13,
+                "grams": 41
+            },
+            {
+                "day": 9,
+                "hour": 18,
+                "grams": 38
+            },
+            {
+                "day": 10,
+                "hour": 7,
+                "grams": 37
+            },
+            {
+                "day": 10,
+                "hour": 14,
+                "grams": 42
+            },
+            {
+                "day": 10,
+                "hour": 18,
+                "grams": 39
+            }
+        ],
+        "exercises": [
+            {
+                "day": 1,
+                "hour": 6,
+                "p_vo2_max": 60,
+                "duration": 43
+            },
+            {
+                "day": 2,
+                "hour": 13,
+                "p_vo2_max": 70,
+                "duration": 52
+            },
+            {
+                "day": 3,
+                "hour": 20,
+                "p_vo2_max": 62,
+                "duration": 53
+            },
+            {
+                "day": 4,
+                "hour": 7,
+                "p_vo2_max": 72,
+                "duration": 56
+            },
+            {
+                "day": 5,
+                "hour": 19,
+                "p_vo2_max": 57,
+                "duration": 46
+            },
+            {
+                "day": 6,
+                "hour": 7,
+                "p_vo2_max": 61,
+                "duration": 48
+            },
+            {
+                "day": 7,
+                "hour": 7,
+                "p_vo2_max": 75,
+                "duration": 38
+            },
+            {
+                "day": 8,
+                "hour": 18,
+                "p_vo2_max": 54,
+                "duration": 52
+            },
+            {
+                "day": 9,
+                "hour": 18,
+                "p_vo2_max": 68,
+                "duration": 35
+            },
+            {
+                "day": 10,
+                "hour": 19,
+                "p_vo2_max": 58,
+                "duration": 54
+            }
+        ]
+    },
+    {
+        "params": {
+            "weight": 90,
+            "mmol_L_to_mg_dL": 18,
+            "mg_dL_to_mmol_L": 0.05555555555555555,
+            "g_to_mmol": 5.555555555555555,
+            "mU_kg_min_to_U_h": 5.3999999999999995,
+            "t_max_I": 55,
+            "V_I": 0.12,
+            "k_e": 0.138,
+            "k_a1": 0.006,
+            "k_a2": 0.06,
+            "k_a3": 0.03,
+            "S_f1": 0.0019656876556604155,
+            "S_f2": 0.00046840087763691274,
+            "S_f3": 0.02148463684203434,
+            "k_12": 0.066,
+            "F_01": 0.0097,
+            "EGP_0": 0.0161,
+            "A_G": 0.8,
+            "t_max_G": 40,
+            "V_G": 0.16
+        },
+        "meals": [
+            {
+                "day": 1,
+                "hour": 6,
+                "grams": 24
+            },
+            {
+                "day": 1,
+                "hour": 14,
+                "grams": 46
+            },
+            {
+                "day": 1,
+                "hour": 18,
+                "grams": 34
+            },
+            {
+                "day": 2,
+                "hour": 6,
+                "grams": 32
+            },
+            {
+                "day": 2,
+                "hour": 12,
+                "grams": 34
+            },
+            {
+                "day": 2,
+                "hour": 18,
+                "grams": 38
+            },
+            {
+                "day": 3,
+                "hour": 8,
+                "grams": 30
+            },
+            {
+                "day": 3,
+                "hour": 12,
+                "grams": 59
+            },
+            {
+                "day": 3,
+                "hour": 19,
+                "grams": 53
+            },
+            {
+                "day": 4,
+                "hour": 8,
+                "grams": 43
+            },
+            {
+                "day": 4,
+                "hour": 12,
+                "grams": 43
+            },
+            {
+                "day": 4,
+                "hour": 21,
+                "grams": 33
+            },
+            {
+                "day": 5,
+                "hour": 7,
+                "grams": 46
+            },
+            {
+                "day": 5,
+                "hour": 13,
+                "grams": 76
+            },
+            {
+                "day": 5,
+                "hour": 19,
+                "grams": 39
+            },
+            {
+                "day": 6,
+                "hour": 6,
+                "grams": 46
+            },
+            {
+                "day": 6,
+                "hour": 13,
+                "grams": 52
+            },
+            {
+                "day": 6,
+                "hour": 20,
+                "grams": 52
+            },
+            {
+                "day": 7,
+                "hour": 8,
+                "grams": 30
+            },
+            {
+                "day": 7,
+                "hour": 14,
+                "grams": 44
+            },
+            {
+                "day": 7,
+                "hour": 19,
+                "grams": 32
+            },
+            {
+                "day": 8,
+                "hour": 7,
+                "grams": 43
+            },
+            {
+                "day": 8,
+                "hour": 14,
+                "grams": 72
+            },
+            {
+                "day": 8,
+                "hour": 21,
+                "grams": 33
+            },
+            {
+                "day": 9,
+                "hour": 7,
+                "grams": 44
+            },
+            {
+                "day": 9,
+                "hour": 13,
+                "grams": 70
+            },
+            {
+                "day": 9,
+                "hour": 21,
+                "grams": 44
+            },
+            {
+                "day": 10,
+                "hour": 8,
+                "grams": 24
+            },
+            {
+                "day": 10,
+                "hour": 13,
+                "grams": 47
+            },
+            {
+                "day": 10,
+                "hour": 19,
+                "grams": 37
+            }
+        ],
+        "exercises": [
+            {
+                "day": 1,
+                "hour": 7,
+                "p_vo2_max": 56,
+                "duration": 40
+            },
+            {
+                "day": 2,
+                "hour": 19,
+                "p_vo2_max": 59,
+                "duration": 41
+            },
+            {
+                "day": 3,
+                "hour": 7,
+                "p_vo2_max": 68,
+                "duration": 35
+            },
+            {
+                "day": 4,
+                "hour": 19,
+                "p_vo2_max": 56,
+                "duration": 60
+            },
+            {
+                "day": 5,
+                "hour": 12,
+                "p_vo2_max": 58,
+                "duration": 56
+            },
+            {
+                "day": 6,
+                "hour": 20,
+                "p_vo2_max": 59,
+                "duration": 55
+            },
+            {
+                "day": 7,
+                "hour": 20,
+                "p_vo2_max": 65,
+                "duration": 43
+            },
+            {
+                "day": 8,
+                "hour": 20,
+                "p_vo2_max": 72,
+                "duration": 58
+            },
+            {
+                "day": 9,
+                "hour": 11,
+                "p_vo2_max": 61,
+                "duration": 42
+            },
+            {
+                "day": 10,
+                "hour": 13,
+                "p_vo2_max": 57,
+                "duration": 46
+            }
+        ]
+    },
+    {
+        "params": {
+            "weight": 67,
+            "mmol_L_to_mg_dL": 18,
+            "mg_dL_to_mmol_L": 0.05555555555555555,
+            "g_to_mmol": 5.555555555555555,
+            "mU_kg_min_to_U_h": 4.02,
+            "t_max_I": 55,
+            "V_I": 0.12,
+            "k_e": 0.138,
+            "k_a1": 0.006,
+            "k_a2": 0.06,
+            "k_a3": 0.03,
+            "S_f1": 0.0022633500753782973,
+            "S_f2": 0.00022043954125117402,
+            "S_f3": 0.020885249068279252,
+            "k_12": 0.066,
+            "F_01": 0.0097,
+            "EGP_0": 0.0161,
+            "A_G": 0.8,
+            "t_max_G": 40,
+            "V_G": 0.16
+        },
+        "meals": [
+            {
+                "day": 1,
+                "hour": 6,
+                "grams": 18
+            },
+            {
+                "day": 1,
+                "hour": 12,
+                "grams": 57
+            },
+            {
+                "day": 1,
+                "hour": 21,
+                "grams": 50
+            },
+            {
+                "day": 2,
+                "hour": 7,
+                "grams": 37
+            },
+            {
+                "day": 2,
+                "hour": 12,
+                "grams": 73
+            },
+            {
+                "day": 2,
+                "hour": 19,
+                "grams": 44
+            },
+            {
+                "day": 3,
+                "hour": 6,
+                "grams": 28
+            },
+            {
+                "day": 3,
+                "hour": 12,
+                "grams": 71
+            },
+            {
+                "day": 3,
+                "hour": 20,
+                "grams": 31
+            },
+            {
+                "day": 4,
+                "hour": 7,
+                "grams": 31
+            },
+            {
+                "day": 4,
+                "hour": 14,
+                "grams": 79
+            },
+            {
+                "day": 4,
+                "hour": 18,
+                "grams": 41
+            },
+            {
+                "day": 5,
+                "hour": 6,
+                "grams": 46
+            },
+            {
+                "day": 5,
+                "hour": 14,
+                "grams": 38
+            },
+            {
+                "day": 5,
+                "hour": 19,
+                "grams": 46
+            },
+            {
+                "day": 6,
+                "hour": 8,
+                "grams": 35
+            },
+            {
+                "day": 6,
+                "hour": 13,
+                "grams": 72
+            },
+            {
+                "day": 6,
+                "hour": 20,
+                "grams": 44
+            },
+            {
+                "day": 7,
+                "hour": 8,
+                "grams": 38
+            },
+            {
+                "day": 7,
+                "hour": 13,
+                "grams": 54
+            },
+            {
+                "day": 7,
+                "hour": 19,
+                "grams": 39
+            },
+            {
+                "day": 8,
+                "hour": 8,
+                "grams": 41
+            },
+            {
+                "day": 8,
+                "hour": 14,
+                "grams": 72
+            },
+            {
+                "day": 8,
+                "hour": 20,
+                "grams": 48
+            },
+            {
+                "day": 9,
+                "hour": 7,
+                "grams": 38
+            },
+            {
+                "day": 9,
+                "hour": 12,
+                "grams": 66
+            },
+            {
+                "day": 9,
+                "hour": 21,
+                "grams": 36
+            },
+            {
+                "day": 10,
+                "hour": 6,
+                "grams": 49
+            },
+            {
+                "day": 10,
+                "hour": 13,
+                "grams": 51
+            },
+            {
+                "day": 10,
+                "hour": 20,
+                "grams": 33
+            }
+        ],
+        "exercises": [
+            {
+                "day": 1,
+                "hour": 19,
+                "p_vo2_max": 54,
+                "duration": 44
+            },
+            {
+                "day": 2,
+                "hour": 13,
+                "p_vo2_max": 69,
+                "duration": 56
+            },
+            {
+                "day": 3,
+                "hour": 6,
+                "p_vo2_max": 70,
+                "duration": 47
+            },
+            {
+                "day": 4,
+                "hour": 6,
+                "p_vo2_max": 66,
+                "duration": 42
+            },
+            {
+                "day": 5,
+                "hour": 12,
+                "p_vo2_max": 63,
+                "duration": 39
+            },
+            {
+                "day": 6,
+                "hour": 7,
+                "p_vo2_max": 64,
+                "duration": 30
+            },
+            {
+                "day": 7,
+                "hour": 11,
+                "p_vo2_max": 69,
+                "duration": 46
+            },
+            {
+                "day": 8,
+                "hour": 20,
+                "p_vo2_max": 58,
+                "duration": 50
+            },
+            {
+                "day": 9,
+                "hour": 11,
+                "p_vo2_max": 54,
+                "duration": 33
+            },
+            {
+                "day": 10,
+                "hour": 7,
+                "p_vo2_max": 69,
+                "duration": 50
+            }
+        ]
+    }
+]
