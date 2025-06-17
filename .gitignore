@@ -168,4 +168,5 @@ cython_debug/
 *.txt
 *.json
 !population*.json
+!patient*.json
 !q_table*.json
