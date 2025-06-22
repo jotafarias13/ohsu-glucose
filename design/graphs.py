@@ -89,18 +89,22 @@ def plot_bgc(data: dict, output_file: Path, params: dict) -> None:
         data["time"], data["G"], color="#36A2EB", linewidth=4, label="$G(t)$"
     )
 
-    ax.set_xlabel("Time [h]", labelpad=20, fontsize=16)
+    ax.set_xlabel("Time [h]", labelpad=20, fontsize=20)
     ax.set_ylabel(
         (
             "Blood Glucose Concentration "
             r"$\left[ \si{mg {\cdot} dL^{-1}} \right]$"
         ),
         labelpad=20,
-        fontsize=16,
+        fontsize=20,
     )
 
     ax.set_xlim(left=0, right=right)
-    # ax.set_ylim(bottom=-100, top=315)
+
+    if params["controller_type"] == ControllerType.FBL_RBF_2:
+        ax.set_ylim(0, 620)
+    else:
+        ax.set_ylim(0, 400)
 
     ax.set_xticks(
         ticks=list(range(0, DAYS * 24 + 1, 6)),
@@ -113,9 +117,6 @@ def plot_bgc(data: dict, output_file: Path, params: dict) -> None:
         fontsize=16,
     )
 
-    ax.axvline(x=24, color="#C9C9C9", linewidth=2)
-    ax.axvline(x=48, color="#C9C9C9", linewidth=2)
-
     ax.axhline(y=54, color="#FF6384", alpha=0.5, linewidth=1, linestyle="--")
     ax.axhline(y=70, color="#4BC0C0", alpha=0.5, linewidth=1, linestyle="--")
     ax.axhline(y=180, color="#4BC0C0", alpha=0.5, linewidth=1, linestyle="--")
@@ -123,14 +124,14 @@ def plot_bgc(data: dict, output_file: Path, params: dict) -> None:
 
     ax.legend(prop={"size": 16})
 
-    ax.text(x=11, y=290, s="Day 1", fontsize=16)
-    ax.text(x=35, y=290, s="Day 2", fontsize=16)
-    ax.text(x=59, y=290, s="Day 3", fontsize=16)
-
     ax.text(x=1, y=45, s="Severe Hypoglycemia", fontsize=12)
     ax.text(x=1, y=59, s="Moderate Hypoglycemia", fontsize=12)
     ax.text(x=1, y=185, s="Moderate Hyperglycemia", fontsize=12)
     ax.text(x=1, y=255, s="Severe Hyperglycemia", fontsize=12)
+
+    for day in range(DAYS):
+        ax.axvline(x=24 * (day + 1), color="#C9C9C9", linewidth=2)
+        ax.text(x=8 + 24 * day, y=350, s=f"Day {day + 1}", fontsize=16)
 
     plt.savefig(output_file, bbox_inches="tight")
     plt.close()
@@ -238,18 +239,19 @@ def plot_control(data: dict, output_file: Path, params: dict) -> None:
         data["time"],
         data["u"],
         color="#36A2EB",
-        linewidth=2,
+        linewidth=4,
         label="$u(t)$",
     )
 
-    ax.set_xlabel("Time [h]", labelpad=20, fontsize=16)
+    ax.set_xlabel("Time [h]", labelpad=20, fontsize=20)
     ax.set_ylabel(
         ("Insulin Infusion" r"$\left[ \si{U {\cdot} h^{-1}} \right]$"),
         labelpad=20,
-        fontsize=16,
+        fontsize=20,
     )
 
     ax.set_xlim(left=0, right=right)
+    ax.set_ylim(-0.2, 6.0)
 
     ax.set_xticks(
         ticks=list(range(0, DAYS * 24 + 1, 6)),
@@ -263,9 +265,10 @@ def plot_control(data: dict, output_file: Path, params: dict) -> None:
 
     ax.legend(prop={"size": 16})
 
-    ax.text(x=0.15, y=0.97, s="Day 1", fontsize=16, transform=ax.transAxes)
-    ax.text(x=0.48, y=0.97, s="Day 2", fontsize=16, transform=ax.transAxes)
-    ax.text(x=0.81, y=0.97, s="Day 3", fontsize=16, transform=ax.transAxes)
+    for day in range(DAYS):
+        if day < DAYS - 1:
+            ax.axvline(x=24 * (day + 1), color="#C9C9C9", linewidth=2)
+        ax.text(x=8 + 24 * day, y=5.2, s=f"Day {day + 1}", fontsize=16)
 
     plt.savefig(output_file, bbox_inches="tight")
     plt.close()
@@ -479,8 +482,8 @@ def plot_weights_norm(data: dict, output_file: Path, params: dict) -> None:
 
 
 def plot_rbf(params: dict, output_file: Path) -> None:
-    start = params["centers"][0] - 3 * params["widths"][0]
-    end = params["centers"][-1] + 3 * params["widths"][-1]
+    start = params["centers"][0] - 3.2 * params["widths"][0]
+    end = params["centers"][-1] + 3.2 * params["widths"][-1]
     length = (end - start) / 10_000
     error = np.arange(start, end, length, dtype=float)
     phi = [
@@ -493,8 +496,39 @@ def plot_rbf(params: dict, output_file: Path) -> None:
     phi = np.array(phi)
 
     _, ax = plt.subplots(nrows=1, ncols=1, figsize=(16, 8))
-    for phi_ in phi.T:
-        ax.plot(error, phi_, linewidth=2)
+    for idx, phi_ in enumerate(phi.T, 1):
+        ax.plot(
+            error,
+            phi_,
+            linewidth=4,
+            label=rf"$\varphi_{{{idx}}}$",
+        )
+
+    if params["controller_type"] == ControllerType.FBL_RBF_2:
+        ax.set_xlabel(
+            r"Error $s$",
+            labelpad=20,
+            fontsize=20,
+        )
+    else:
+        ax.set_xlabel(
+            r"Error $\tilde{x}$ $[\si{mmol {\cdot} L^{-1}}]$",
+            labelpad=20,
+            fontsize=20,
+        )
+    if params["controller_type"] == ControllerType.FBL_RBF_2:
+        ax.set_ylabel(
+            r"Activation Functions $\varphi_{i}(s)$",
+            labelpad=20,
+            fontsize=20,
+        )
+    else:
+        ax.set_ylabel(
+            r"Activation Functions $\varphi_{i}(\tilde{x})$",
+            labelpad=20,
+            fontsize=20,
+        )
+    ax.legend(prop={"size": 16})
 
     plt.savefig(output_file, bbox_inches="tight")
     plt.close()
@@ -577,7 +611,7 @@ def plot_estimation(
     plt.close()
 
 
-def plot_phase_plan(data: dict, output_file: Path, params: dict) -> None:
+def plot_phase_plane(data: dict, output_file: Path, params: dict) -> None:
     data_ = exclude_training(data, params)
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(16, 8))
 
@@ -586,18 +620,73 @@ def plot_phase_plan(data: dict, output_file: Path, params: dict) -> None:
         data_["G_p"],
         c=data_["u"],
         cmap="inferno",
-        s=5,
+        s=4,
         vmin=0.0,
         vmax=3.5,
+        rasterized=True,
     )
     cbar = fig.colorbar(scatter, ax=ax)
-    cbar.set_label("Insulin")
+    cbar.set_label(r"Insulin Infusion $[\si{U {\cdot} h^{-1}}]$", fontsize=16)
 
-    ax.set_xlabel("BGC", labelpad=20, fontsize=16)
-    ax.set_ylabel("BGCp", labelpad=20, fontsize=16)
+    ax.set_xlabel(
+        r"Glycemia $[\si{mg {\cdot} dL^{-1}}]$", labelpad=20, fontsize=20
+    )
+    ax.set_ylabel(
+        "Glycemia Rate of Change "
+        r"$[\si{mg {\cdot} dL^{-1} {\cdot} \text{min}^{-1}}]$",
+        labelpad=20,
+        fontsize=20,
+    )
+
+    ax.set_xlim(left=40, right=375)
+    ax.set_ylim(-3, 3.5)
 
     ax.grid(True)
     fig.tight_layout()
+
+    plt.savefig(output_file, bbox_inches="tight")
+    plt.close()
+
+
+def plot_error1(data: dict, output_file: Path, params: dict) -> None:
+    DAYS = params["days"]
+    right = DAYS * 24
+
+    _, ax = plt.subplots(nrows=1, ncols=1, figsize=(16, 8))
+
+    ax.plot(
+        data["time"],
+        data["s1"],
+        color="#36A2EB",
+        linewidth=4,
+        label=r"$\tilde{G}(t)$",
+    )
+
+    ax.set_xlabel("Time [h]", labelpad=20, fontsize=20)
+    ax.set_ylabel(
+        (
+            "Glycemia Tracking Error "
+            r"$\left[ \si{mmol {\cdot} L^{-1}} \right]$"
+        ),
+        labelpad=20,
+        fontsize=20,
+    )
+
+    ax.set_xlim(left=0, right=right)
+    ax.set_ylim(-5, 15)
+
+    ax.set_xticks(
+        ticks=list(range(0, DAYS * 24 + 1, 6)),
+        labels=[0] + [6, 12, 18, 24] * DAYS,
+        fontsize=16,
+    )
+    ax.tick_params(axis="y", labelsize=16)
+    ax.legend(prop={"size": 16})
+
+    for day in range(DAYS):
+        if day < DAYS - 1:
+            ax.axvline(x=24 * (day + 1), color="#C9C9C9", linewidth=2)
+        ax.text(x=8 + 24 * day, y=14, s=f"Day {day + 1}", fontsize=16)
 
     plt.savefig(output_file, bbox_inches="tight")
     plt.close()
@@ -613,14 +702,22 @@ def plot_error(data: dict, output_file: Path, params: dict) -> None:
         data["time"],
         data["s"],
         color="#36A2EB",
-        linewidth=2,
+        linewidth=4,
         label="$s(t)$",
     )
 
-    ax.set_xlabel("Time [h]", labelpad=20, fontsize=16)
-    ax.set_ylabel("Error", labelpad=20, fontsize=16)
+    ax.set_xlabel("Time [h]", labelpad=20, fontsize=20)
+    ax.set_ylabel(
+        (
+            "Glycemia Combined Error "
+            r"$\left[ \si{mmol {\cdot} L^{-1}} \right]$"
+        ),
+        labelpad=20,
+        fontsize=20,
+    )
 
     ax.set_xlim(left=0, right=right)
+    ax.set_ylim(-0.12, 0.25)
 
     ax.set_xticks(
         ticks=list(range(0, DAYS * 24 + 1, 6)),
@@ -629,6 +726,11 @@ def plot_error(data: dict, output_file: Path, params: dict) -> None:
     )
     ax.tick_params(axis="y", labelsize=16)
     ax.legend(prop={"size": 16})
+
+    for day in range(DAYS):
+        if day < DAYS - 1:
+            ax.axvline(x=24 * (day + 1), color="#C9C9C9", linewidth=2)
+        ax.text(x=8 + 24 * day, y=0.22, s=f"Day {day + 1}", fontsize=16)
 
     plt.savefig(output_file, bbox_inches="tight")
     plt.close()
@@ -766,8 +868,12 @@ def run(data: dict, params: dict) -> None:
     plot_estimation(data, graphs_dir / graph_file, patient, params)
 
     # space state
-    graph_file = "phase-plan.pdf"
-    plot_phase_plan(data, graphs_dir / graph_file, params)
+    graph_file = "phase-plane.pdf"
+    plot_phase_plane(data, graphs_dir / graph_file, params)
+
+    # s1 - simple error
+    graph_file = "error1.pdf"
+    plot_error1(data, graphs_dir / graph_file, params)
 
     # s - combined error
     graph_file = "error.pdf"
