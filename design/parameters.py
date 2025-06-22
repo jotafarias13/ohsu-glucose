@@ -112,7 +112,7 @@ params = [
         "centers": centers_2,
         "widths": widths_2,
         "eta": 0.002,
-        "w_max": 1.0,
+        "w_max": 0.8,
         "G_d": 90,
         "w0": [0] * len(centers_2),
     },
