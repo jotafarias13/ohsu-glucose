@@ -59,6 +59,7 @@ def run_simulation(params: dict) -> dict:
     w = np.empty((times.shape[0], N_NEURONS), dtype=float)
     G_s_p_est = np.empty_like(times, dtype=float)
     s = np.empty_like(times, dtype=float)
+    s1 = np.empty_like(times, dtype=float)
     G_p_error = np.empty_like(times, dtype=float)
 
     S_1[0] = patient.S_1_0
@@ -75,11 +76,12 @@ def run_simulation(params: dict) -> dict:
     d_hat[0] = 0
     G_s_p_est[0] = 0
     s[0] = 0
+    s1[0] = 0
     G_p_error[0] = 0
     G_s_pp_est[0] = 0
     w[0] = params["w0"]
     u[0] = control(
-        G_s[0], G_s_p_est[0], w, d_hat, fbl, 0, times[0], s, params=params
+        G_s[0], G_s_p_est[0], w, d_hat, fbl, 0, times[0], s1, params=params
     )
 
     U_G = U_G_array(times)
@@ -144,28 +146,40 @@ def run_simulation(params: dict) -> dict:
         if is_multiple(idx, dt_ratio):
             prev = idx - dt_ratio
             G_s_p_est[idx] = (G_s[idx] - G_s[prev]) / dt_ctr
+            s[idx] = (G_s_p_est[idx] - G_d_p) + params["lambda"] * (
+                G_s[idx] - G_d
+            )
+            s1[idx] = G_s[idx] - G_d
+            G_p_error[idx] = G_s_p_est[idx] - G_d_p
             if params["controller_type"] == ControllerType.FBL_RBF_2:
-                s[idx] = (G_s_p_est[idx] - G_d_p) + params["lambda"] * (
-                    G_s[idx] - G_d
+                u[idx] = control(
+                    G_s[idx],
+                    G_s_p_est[idx],
+                    w,
+                    d_hat,
+                    fbl,
+                    idx,
+                    t,
+                    s,
+                    params=params,
                 )
             else:
-                s[idx] = G_s[idx] - G_d
-            G_p_error[idx] = G_s_p_est[idx] - G_d_p
-            u[idx] = control(
-                G_s[idx],
-                G_s_p_est[idx],
-                w,
-                d_hat,
-                fbl,
-                idx,
-                t,
-                s,
-                params=params,
-            )
+                u[idx] = control(
+                    G_s[idx],
+                    G_s_p_est[idx],
+                    w,
+                    d_hat,
+                    fbl,
+                    idx,
+                    t,
+                    s1,
+                    params=params,
+                )
             G_s_pp_est[idx] = (G_s_p_est[idx] - G_s_p_est[prev]) / dt_ctr
 
         else:
             G_s_p_est[idx] = G_s_p_est[idx - 1]
+            s1[idx] = s1[idx - 1]
             s[idx] = s[idx - 1]
             u[idx] = u[idx - 1]
             G_p_error[idx] = G_p_error[idx - 1]
@@ -199,6 +213,7 @@ def run_simulation(params: dict) -> dict:
         "d_hat": d_hat,
         "fbl": fbl,
         "s": s,
+        "s1": s1,
         "G_p_error": G_p_error,
         "G_error": G_error,
         "l_G_error": l_G_error,
