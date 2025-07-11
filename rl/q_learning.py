@@ -46,15 +46,15 @@ class QLearningEtaOptimizer:
         state_day = np.digitize(self.time, self.time_bins)
         state_day = max(min(state_day, self.time_bins.shape[0] - 1), 1) - 1
 
-        if self.current_eta >= 0.05 and self.current_eta <= 0.1:
+        if self.current_eta >= 0.005 and self.current_eta <= 0.01:
             state_eta = 1
-        elif self.current_eta >= 0.01 and self.current_eta < 0.05:
-            state_eta = 2
-        elif self.current_eta >= 0.005 and self.current_eta < 0.01:
-            state_eta = 3
         elif self.current_eta >= 0.001 and self.current_eta < 0.005:
+            state_eta = 2
+        elif self.current_eta >= 0.0005 and self.current_eta < 0.001:
+            state_eta = 3
+        elif self.current_eta >= 0.0001 and self.current_eta < 0.0005:
             state_eta = 4
-        elif self.current_eta >= 0 and self.current_eta < 0.001:
+        elif self.current_eta >= 0 and self.current_eta < 0.0001:
             state_eta = 5
 
         state = (state_day - 1) * 5 + state_eta
@@ -198,15 +198,15 @@ class QLearningEtaOptimizer:
             states.append(state)
 
             state_day = day
-            if eta >= 0.05 and eta <= 0.1:
+            if eta >= 0.005 and eta <= 0.01:
                 state_eta = 1
-            elif eta >= 0.01 and eta < 0.05:
-                state_eta = 2
-            elif eta >= 0.005 and eta < 0.01:
-                state_eta = 3
             elif eta >= 0.001 and eta < 0.005:
+                state_eta = 2
+            elif eta >= 0.0005 and eta < 0.001:
+                state_eta = 3
+            elif eta >= 0.0001 and eta < 0.0005:
                 state_eta = 4
-            elif eta >= 0 and eta < 0.001:
+            elif eta >= 0 and eta < 0.0001:
                 state_eta = 5
             state = (state_day - 1) * 5 + state_eta
 
