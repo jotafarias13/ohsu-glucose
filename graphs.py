@@ -225,34 +225,28 @@ def plot_control(data: dict, output_file: Path) -> None:
         data["time"],
         data["u"],
         color="#36A2EB",
-        linewidth=2,
+        linewidth=4,
         label="$u(t)$",
     )
 
-    ax.set_xlabel("Time [h]", labelpad=20, fontsize=16)
+    ax.set_xlabel("Time [h]", labelpad=20, fontsize=20)
     ax.set_ylabel(
         ("Insulin Infusion" r"$\left[ \si{U {\cdot} h^{-1}} \right]$"),
         labelpad=20,
-        fontsize=16,
+        fontsize=20,
     )
 
     ax.set_xlim(left=0, right=right)
+    ax.set_ylim(-0.2, 5.0)
 
     ax.set_xticks(
-        ticks=list(range(0, DAYS * 24 + 1, 6)),
-        labels=[0] + [6, 12, 18, 24] * DAYS,
+        ticks=list(range(12, DAYS * 24 + 1, 24)),
+        labels=[f"Day {i}" for i in range(1, DAYS + 1)],
         fontsize=16,
     )
     ax.tick_params(axis="y", labelsize=16)
 
-    ax.axvline(x=24, color="#C9C9C9", linewidth=2)
-    ax.axvline(x=48, color="#C9C9C9", linewidth=2)
-
     ax.legend(prop={"size": 16})
-
-    ax.text(x=0.15, y=0.97, s="Day 1", fontsize=16, transform=ax.transAxes)
-    ax.text(x=0.48, y=0.97, s="Day 2", fontsize=16, transform=ax.transAxes)
-    ax.text(x=0.81, y=0.97, s="Day 3", fontsize=16, transform=ax.transAxes)
 
     plt.savefig(output_file, bbox_inches="tight")
     plt.close()
@@ -473,13 +467,30 @@ def plot_phase_plan(data: dict, output_file: Path) -> None:
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(16, 8))
 
     scatter = ax.scatter(
-        data_["G"], data_["G_p"], c=data_["u"], cmap="viridis", s=5
+        data_["G"],
+        data_["G_p"],
+        c=data_["u"],
+        cmap="inferno",
+        s=4,
+        vmin=0.0,
+        vmax=3.5,
+        rasterized=True,
     )
     cbar = fig.colorbar(scatter, ax=ax)
-    cbar.set_label("Insulin")
+    cbar.set_label(r"Insulin Infusion $[\si{U {\cdot} h^{-1}}]$", fontsize=16)
 
-    ax.set_xlabel("BGC", labelpad=20, fontsize=16)
-    ax.set_ylabel("BGCp", labelpad=20, fontsize=16)
+    ax.set_xlabel(
+        r"Glycemia $[\si{mg {\cdot} dL^{-1}}]$", labelpad=20, fontsize=20
+    )
+    ax.set_ylabel(
+        "Glycemia Rate of Change "
+        r"$[\si{mg {\cdot} dL^{-1} {\cdot} \text{min}^{-1}}]$",
+        labelpad=20,
+        fontsize=20,
+    )
+
+    ax.set_xlim(left=50, right=310)
+    ax.set_ylim(-3, 3)
 
     ax.grid(True)
     fig.tight_layout()
