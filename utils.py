@@ -10,13 +10,15 @@ def save_data(data: dict, params: dict) -> None:
     data_ = pl.DataFrame(data)
     data_ = data_.select(
         pl.col("d").alias("uncertainty"),
-        ((pl.col("G_s") - pl.lit(100)) * patient.mg_dL_to_mmol_L).alias(
+        ((pl.col("G_s") - pl.lit(90)) * patient.mg_dL_to_mmol_L).alias(
             "error"
         ),
         pl.col("u"),
         pl.col("time"),
         pl.col("d_hat"),
         pl.col("s"),
+        pl.col("G"),
+        pl.col("G_p"),
     )
     data_file = "data.parquet"
     data_path = graphs_dir / data_file
