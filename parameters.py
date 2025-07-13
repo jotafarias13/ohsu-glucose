@@ -34,22 +34,40 @@ def eta_offline(t: float) -> float:
         return 0.0002025
 
 
+# def eta_rl(t: float) -> float:
+#     """
+#     Day 1:  0.0025000
+#     Day 2:  0.0022500
+#     Day 3:  0.0020250
+#     Day 4+: 0.0002025
+#     """
+#     t_ = t / (60 * 24)
+#     if t_ < 1:
+#         return 0.0025
+#     elif t_ < 2:
+#         return 0.00225
+#     elif t_ < 3:
+#         return 0.002025
+#     else:
+#         return 0.0002025
+
+
 def eta_rl(t: float) -> float:
     """
-    Day 1:  0.0025000
-    Day 2:  0.0022500
-    Day 3:  0.0020250
-    Day 4+: 0.0002025
+    Day 1:  0.0050000
+    Day 2:  0.0012500
+    Day 3:  0.0003125
+    Day 4+: 0.000234375
     """
     t_ = t / (60 * 24)
     if t_ < 1:
-        return 0.0025
+        return 0.005
     elif t_ < 2:
-        return 0.00225
+        return 0.00125
     elif t_ < 3:
-        return 0.002025
+        return 0.0003125
     else:
-        return 0.0002025
+        return 0.000234375
 
 
 centers = np.array([0.05, 0.15, 0.25, 0.35])
@@ -161,7 +179,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.7,
+        "w_max": 0.8,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -172,7 +190,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.9,
+        "w_max": 1.0,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -183,7 +201,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.65,
+        "w_max": 0.8,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -194,7 +212,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.65,
+        "w_max": 0.7,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -205,7 +223,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.7,
+        "w_max": 0.8,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -227,7 +245,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.65,
+        "w_max": 0.7,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -238,7 +256,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.7,
+        "w_max": 0.8,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -249,7 +267,7 @@ params_train = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.5,
+        "w_max": 0.6,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -264,7 +282,7 @@ params_test = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.8,
+        "w_max": 0.9,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -275,7 +293,7 @@ params_test = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.8,
+        "w_max": 1.1,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -286,7 +304,7 @@ params_test = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.8,
+        "w_max": 1.0,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
@@ -297,7 +315,7 @@ params_test = [
         "centers": centers,
         "widths": widths,
         "eta": eta_rl,
-        "w_max": 0.6,
+        "w_max": 0.5,
         "G_d": 90,
         "w0": [0] * len(centers),
     },
