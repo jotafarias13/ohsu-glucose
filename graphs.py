@@ -490,7 +490,7 @@ def plot_phase_plan(data: dict, output_file: Path) -> None:
     )
 
     ax.set_xlim(left=50, right=310)
-    ax.set_ylim(-3, 3)
+    ax.set_ylim(-3, 3.5)
 
     ax.grid(True)
     fig.tight_layout()
