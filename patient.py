@@ -13,6 +13,7 @@ mg_dL_to_mmol_L = 1 / mmol_L_to_mg_dL  # noqa: N816
 class PopulationType(str, Enum):
     TRAIN = "TRAIN"
     TEST = "TEST"
+    OFFLINE = "OFFLINE"
 
 
 def get_patient(

@@ -22,6 +22,9 @@ def plot_aggregate(
     if population == PopulationType.TEST:
         population_dir = Path.cwd() / "results_test"
         pop_size = 5
+    if population == PopulationType.OFFLINE:
+        population_dir = Path.cwd() / "results_offline"
+        pop_size = 5
 
     data_file = population_dir / "sim_0" / "data.parquet"
     times = (
@@ -232,7 +235,7 @@ def plot_abnormal_glycemia_offline(graphs_dir: Path) -> None:
     data_file = population_dir / "sim_3" / "data.parquet"
     data = pl.read_parquet(data_file, columns=["time", "G"]).gather_every(100)
 
-    _, ax = plt.subplots(1, 1, figsize=(16, 6))
+    _, ax = plt.subplots(1, 1, figsize=(16, 8))
     ax.plot(
         data["time"],
         data["G"],
@@ -243,9 +246,9 @@ def plot_abnormal_glycemia_offline(graphs_dir: Path) -> None:
 
     pvo2 = r"$\text{PVO}_{2\,\max}$"
     ax.axvline(x=(8 - 1) * 24 + 20, color="#C9C9C9", linewidth=2)
-    ax.text(x=(8 - 1) * 24 + 20 + 1, y=350, s="Exercise", fontsize=12)
-    ax.text(x=(8 - 1) * 24 + 20 + 1, y=330, s=rf"72\% {pvo2}", fontsize=12)
-    ax.text(x=(8 - 1) * 24 + 20 + 1, y=310, s="58 minutes", fontsize=12)
+    ax.text(x=(8 - 1) * 24 + 20 + 1, y=310, s="Exercise", fontsize=12)
+    ax.text(x=(8 - 1) * 24 + 20 + 1, y=290, s=rf"72\% {pvo2}", fontsize=12)
+    ax.text(x=(8 - 1) * 24 + 20 + 1, y=270, s="58 minutes", fontsize=12)
 
     ax.set_xlabel("Time", labelpad=20, fontsize=20)
     ax.set_xlim(left=0, right=240)
@@ -256,7 +259,7 @@ def plot_abnormal_glycemia_offline(graphs_dir: Path) -> None:
         fontsize=16,
     )
 
-    ax.set_ylim(0, 450)
+    ax.set_ylim(0, 350)
     ax.set_ylabel(
         (
             "Blood Glucose Concentration "
@@ -274,10 +277,10 @@ def plot_abnormal_glycemia_offline(graphs_dir: Path) -> None:
     ax.axhline(y=70, color="#4BC0C0", alpha=0.5, linewidth=1, linestyle="--")
     ax.axhline(y=180, color="#4BC0C0", alpha=0.5, linewidth=1, linestyle="--")
     ax.axhline(y=250, color="#FF6384", alpha=0.5, linewidth=1, linestyle="--")
-    ax.text(x=1, y=45, s="Severe Hypoglycemia", fontsize=10)
-    ax.text(x=1, y=59, s="Moderate Hypoglycemia", fontsize=10)
-    ax.text(x=1, y=185, s="Moderate Hyperglycemia", fontsize=10)
-    ax.text(x=1, y=255, s="Severe Hyperglycemia", fontsize=10)
+    ax.text(x=1, y=45, s="Severe Hypoglycemia", fontsize=12)
+    ax.text(x=1, y=59, s="Moderate Hypoglycemia", fontsize=12)
+    ax.text(x=1, y=185, s="Moderate Hyperglycemia", fontsize=12)
+    ax.text(x=1, y=255, s="Severe Hyperglycemia", fontsize=12)
 
     ax.legend(prop={"size": 16})
 
@@ -294,6 +297,7 @@ def main() -> None:
     plot_aggregate(graphs_dir, "u", PopulationType.TRAIN)
     plot_aggregate(graphs_dir, "G", PopulationType.TEST)
     plot_aggregate(graphs_dir, "u", PopulationType.TEST)
+    plot_aggregate(graphs_dir, "G", PopulationType.OFFLINE)
     plot_abnormal_glycemia(graphs_dir)
     plot_abnormal_glycemia_offline(graphs_dir)
 
