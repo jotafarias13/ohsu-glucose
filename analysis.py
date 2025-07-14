@@ -227,6 +227,65 @@ def plot_abnormal_glycemia(graphs_dir: Path) -> None:
     plt.close()
 
 
+def plot_abnormal_glycemia_offline(graphs_dir: Path) -> None:
+    population_dir = Path.cwd() / "results_offline"
+    data_file = population_dir / "sim_3" / "data.parquet"
+    data = pl.read_parquet(data_file, columns=["time", "G"]).gather_every(100)
+
+    _, ax = plt.subplots(1, 1, figsize=(16, 6))
+    ax.plot(
+        data["time"],
+        data["G"],
+        linewidth=4,
+        color="#36A2EB",
+        label="G(t)",
+    )
+
+    pvo2 = r"$\text{PVO}_{2\,\max}$"
+    ax.axvline(x=(8 - 1) * 24 + 20, color="#C9C9C9", linewidth=2)
+    ax.text(x=(8 - 1) * 24 + 20 + 1, y=350, s="Exercise", fontsize=12)
+    ax.text(x=(8 - 1) * 24 + 20 + 1, y=330, s=rf"72\% {pvo2}", fontsize=12)
+    ax.text(x=(8 - 1) * 24 + 20 + 1, y=310, s="58 minutes", fontsize=12)
+
+    ax.set_xlabel("Time", labelpad=20, fontsize=20)
+    ax.set_xlim(left=0, right=240)
+
+    ax.set_xticks(
+        ticks=list(range(12, 10 * 24 + 1, 24)),
+        labels=[f"Day {i}" for i in range(1, 11)],
+        fontsize=16,
+    )
+
+    ax.set_ylim(0, 450)
+    ax.set_ylabel(
+        (
+            "Blood Glucose Concentration "
+            r"$\left[ \si{mg {\cdot} dL^{-1}} \right]$"
+        ),
+        labelpad=20,
+        fontsize=18,
+    )
+    ax.set_yticks(
+        ticks=list(range(0, 301, 50)),
+        labels=list(range(0, 301, 50)),
+        fontsize=16,
+    )
+    ax.axhline(y=54, color="#FF6384", alpha=0.5, linewidth=1, linestyle="--")
+    ax.axhline(y=70, color="#4BC0C0", alpha=0.5, linewidth=1, linestyle="--")
+    ax.axhline(y=180, color="#4BC0C0", alpha=0.5, linewidth=1, linestyle="--")
+    ax.axhline(y=250, color="#FF6384", alpha=0.5, linewidth=1, linestyle="--")
+    ax.text(x=1, y=45, s="Severe Hypoglycemia", fontsize=10)
+    ax.text(x=1, y=59, s="Moderate Hypoglycemia", fontsize=10)
+    ax.text(x=1, y=185, s="Moderate Hyperglycemia", fontsize=10)
+    ax.text(x=1, y=255, s="Severe Hyperglycemia", fontsize=10)
+
+    ax.legend(prop={"size": 16})
+
+    output_file = graphs_dir / "bgc-abnormal-offline-validation.pdf"
+    plt.savefig(output_file, bbox_inches="tight")
+    plt.close()
+
+
 def main() -> None:
     setup_matplotlib_params()
     graphs_dir = Path.cwd() / "analysis"
@@ -236,6 +295,7 @@ def main() -> None:
     plot_aggregate(graphs_dir, "G", PopulationType.TEST)
     plot_aggregate(graphs_dir, "u", PopulationType.TEST)
     plot_abnormal_glycemia(graphs_dir)
+    plot_abnormal_glycemia_offline(graphs_dir)
 
 
 if __name__ == "__main__":

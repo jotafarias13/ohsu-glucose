@@ -31,7 +31,7 @@ def calculate_weigths(patient_idx: int) -> dict:
     w = Gp @ d
     w_norm = np.linalg.norm(w)
 
-    return {"weights": w.tolist(), "weights_norm": w_norm.tolist()}
+    return {"weights": w.tolist(), "weights_norm": float(w_norm)}
 
 
 def main() -> None:
