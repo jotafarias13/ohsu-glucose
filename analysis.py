@@ -83,7 +83,10 @@ def plot_aggregate(
     )
 
     if var == "G":
-        ax.set_ylim(0, 450)
+        if population == PopulationType.OFFLINE:
+            ax.set_ylim(0, 350)
+        else:
+            ax.set_ylim(0, 450)
         ax.set_ylabel(
             (
                 "Glycemia Variability "
