@@ -16,29 +16,11 @@ dt_ctr = 5.0
 dt_ratio = round(dt_ctr / dt)
 
 
-# def eta_offline(t: float) -> float:
-#     """\
-#     Day 1:  0.0022500
-#     Day 2:  0.0020250
-#     Day 3:  0.0002025
-#     Day 4+: 0.0002025\
-#     """
-#     t_ = t / (60 * 24)
-#     if t_ < 1:
-#         return 0.00225
-#     elif t_ < 2:
-#         return 0.002025
-#     elif t_ < 3:
-#         return 0.0002025
-#     else:
-#         return 0.0002025
-
-
 def eta_offline(t: float) -> float:
     """
-    Day 1:  0.0050000
-    Day 2:  0.0012500
-    Day 3:  0.0003125
+    Day 1:  0.005000000
+    Day 2:  0.001250000
+    Day 3:  0.000312500
     Day 4+: 0.000234375
     """
     t_ = t / (60 * 24)
@@ -52,29 +34,11 @@ def eta_offline(t: float) -> float:
         return 0.000234375
 
 
-# def eta_rl(t: float) -> float:
-#     """
-#     Day 1:  0.0025000
-#     Day 2:  0.0022500
-#     Day 3:  0.0020250
-#     Day 4+: 0.0002025
-#     """
-#     t_ = t / (60 * 24)
-#     if t_ < 1:
-#         return 0.0025
-#     elif t_ < 2:
-#         return 0.00225
-#     elif t_ < 3:
-#         return 0.002025
-#     else:
-#         return 0.0002025
-
-
 def eta_rl(t: float) -> float:
     """
-    Day 1:  0.0050000
-    Day 2:  0.0012500
-    Day 3:  0.0003125
+    Day 1:  0.005000000
+    Day 2:  0.001250000
+    Day 3:  0.000312500
     Day 4+: 0.000234375
     """
     t_ = t / (60 * 24)
