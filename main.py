@@ -28,16 +28,9 @@ from parameters import (
     save_params,
     t0,
 )
-from patient import Patient
+from patient import Patient, PopulationType
 from population.interpatient import S_f_i
-from utils import is_multiple, save_data
-
-SAVE_DATA = True
-PARALLEL = True
-# SIMULATION_TYPE = "NORMAL"
-# SIMULATION_TYPE = "TRAIN"
-# SIMULATION_TYPE = "TEST"
-SIMULATION_TYPE = "OFFLINE"
+from utils import is_multiple, process_args, save_data
 
 
 def run_simulation(params: dict) -> dict:
@@ -228,9 +221,9 @@ def run_graphs(data: dict, params: dict) -> dict:
     return metrics
 
 
-def run(params: dict) -> dict:
+def run(params: dict, *, save=bool) -> dict:
     data = run_simulation(params)
-    if SAVE_DATA:
+    if save:
         save_data(data, params)
     metrics = run_graphs(data, params)
 
@@ -239,14 +232,18 @@ def run(params: dict) -> dict:
 
 def main() -> None:
     start = time.perf_counter()
+    args = process_args()
+    population = args["population"]
+    save = args["save"]
+    parallel = args["parallel"]
 
-    if SIMULATION_TYPE == "TRAIN":
+    if population == PopulationType.TRAIN:
         results_dir = Path.cwd() / "results_train"
         params_list = params_train
-    elif SIMULATION_TYPE == "TEST":
+    elif population == PopulationType.TEST:
         results_dir = Path.cwd() / "results_test"
         params_list = params_test
-    elif SIMULATION_TYPE == "OFFLINE":
+    elif population == PopulationType.OFFLINE:
         results_dir = Path.cwd() / "results_offline"
         params_list = params_offline
     else:
@@ -257,11 +254,12 @@ def main() -> None:
     for idx, params_ in enumerate(params_list):
         params_["graphs_dir"] = results_dir / f"sim_{idx}"
 
-    if PARALLEL:
-        with mp.Pool(processes=5) as pool:
-            metrics_list = pool.map(run, params_list)
+    if parallel:
+        cpus = min(mp.cpu_count(), 5)
+        with mp.Pool(processes=cpus) as pool:
+            metrics_list = pool.map(run, params_list, save)
     else:
-        metrics_list = [run(params_list[0])]
+        metrics_list = [run(params_list[0], save=save)]
 
     end = time.perf_counter()
     print(f"Time: {end - start:.2f}s")

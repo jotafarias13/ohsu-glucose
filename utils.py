@@ -1,6 +1,9 @@
+import argparse
+
 import polars as pl
 
 import patient
+from patient import PopulationType
 
 
 def save_data(data: dict, params: dict) -> None:
@@ -27,3 +30,39 @@ def save_data(data: dict, params: dict) -> None:
 
 def is_multiple(large: int, small: int) -> bool:
     return large % small == 0
+
+
+def process_args() -> dict:
+    parser = argparse.ArgumentParser(
+        prog="Run simulation for virtual patients",
+    )
+
+    parser.add_argument(
+        "-p",
+        "--population",
+        type=str,
+        default="normal",
+        choices=[p.value.lower() for p in list(PopulationType)],
+        help="Population to run rimulations on",
+    )
+
+    parser.add_argument(
+        "-s",
+        "--not-save",
+        action="store_false",
+        help="Whether to save the simulation data",
+    )
+
+    parser.add_argument(
+        "-l",
+        "--not-parallel",
+        action="store_false",
+        help="Whether to run the simulation in parallel",
+    )
+
+    args = parser.parse_args()
+    population = PopulationType(args.population.upper())
+    save = args.not_save
+    parallel = args.not_parallel
+
+    return {"population": population, "save": save, "parallel": parallel}
