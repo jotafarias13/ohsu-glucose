@@ -84,7 +84,7 @@ def plot_aggregate(
 
     if var == "G":
         if population == PopulationType.OFFLINE:
-            ax.set_ylim(0, 350)
+            ax.set_ylim(0, 450)
         else:
             ax.set_ylim(0, 450)
         ax.set_ylabel(
@@ -252,6 +252,10 @@ def plot_abnormal_glycemia_offline(graphs_dir: Path) -> None:
     ax.text(x=(8 - 1) * 24 + 20 + 1, y=310, s="Exercise", fontsize=12)
     ax.text(x=(8 - 1) * 24 + 20 + 1, y=290, s=rf"72\% {pvo2}", fontsize=12)
     ax.text(x=(8 - 1) * 24 + 20 + 1, y=270, s="58 minutes", fontsize=12)
+
+    ax.axvline(x=(8 - 1) * 24 + 12, color="#C9C9C9", linewidth=2)
+    ax.text(x=(8 - 1) * 24 + 12 - 7.5, y=310, s="Meal", fontsize=12)
+    ax.text(x=(8 - 1) * 24 + 12 - 13, y=290, s="81 grams", fontsize=12)
 
     ax.set_xlabel("Time", labelpad=20, fontsize=20)
     ax.set_xlim(left=0, right=240)
