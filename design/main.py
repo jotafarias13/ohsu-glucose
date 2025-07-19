@@ -257,7 +257,8 @@ def main() -> None:
         params_["graphs_dir"] = results_dir / f"sim_{idx}"
 
     if PARALLEL:
-        with mp.Pool(processes=5) as pool:
+        cpus = min(mp.cpu_count(), 5)
+        with mp.Pool(processes=cpus) as pool:
             metrics_list = pool.map(run, params)
     else:
         metrics_list = [run(params[0])]

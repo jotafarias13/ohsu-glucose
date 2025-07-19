@@ -320,9 +320,15 @@ def get_offline_weights() -> dict:
     weights_dir = Path.cwd() / "offline" / "weights"
     for patient_idx in range(5):
         weights_file = weights_dir / f"weights_sim_{patient_idx}.json"
-        with Path.open(weights_file, "r") as file:
-            weights_sim = json.load(file)
-        offline_data[f"sim_{patient_idx}"] = weights_sim
+        if weights_file.exists():
+            with Path.open(weights_file, "r") as file:
+                weights_sim = json.load(file)
+            offline_data[f"sim_{patient_idx}"] = weights_sim
+        else:
+            offline_data[f"sim_{patient_idx}"] = {
+                "weights": [1.0],
+                "weights_norm": 1.0,
+            }
 
     return offline_data
 

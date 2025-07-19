@@ -213,10 +213,10 @@ def save_population(population: list[dict]) -> None:
     train = population[:half_population]
     test = population[half_population:]
 
-    with Path.open("population/population_train.json", "w") as file:
+    with Path.open("population_train.json", "w") as file:
         json.dump(train, file, indent=4, ensure_ascii=False)
 
-    with Path.open("population/population_test.json", "w") as file:
+    with Path.open("population_test.json", "w") as file:
         json.dump(test, file, indent=4, ensure_ascii=False)
 
 
