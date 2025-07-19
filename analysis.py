@@ -238,6 +238,9 @@ def plot_abnormal_glycemia(graphs_dir: Path) -> None:
 
 def plot_abnormal_glycemia_offline(graphs_dir: Path) -> None:
     population_dir = Path.cwd() / "results_offline"
+    if not population_dir.exists():
+        return
+
     data_file = population_dir / "sim_3" / "data.parquet"
     data = pl.read_parquet(data_file, columns=["time", "G"]).gather_every(100)
 
