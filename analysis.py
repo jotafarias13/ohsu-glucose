@@ -26,6 +26,9 @@ def plot_aggregate(
         population_dir = Path.cwd() / "results_offline"
         pop_size = 5
 
+    if not population_dir.exists():
+        return
+
     data_file = population_dir / "sim_0" / "data.parquet"
     times = (
         pl.read_parquet(data_file, columns=["time"])
