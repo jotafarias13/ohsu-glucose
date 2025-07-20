@@ -24,6 +24,9 @@ If you prefer not to use `uv`, you must create a virtual environment in the dire
 pip install -r requirements.txt
 ```
 
+Either way, the python version used should be `3.13`.
+
+
 # Data
 
 The data concerning virtual patient populations is located in directory `population`. The file `population_train.json` contains the patient's parameters, meals and exercises for all 10 subjects in the training population. The file `population_test.json` contains the patient's parameters, meals and exercises for all 5 subjects in the validation population.
