@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 # Data
 
-The data concerning virtual patient populations are located in directory `population`. The file `population_train.json` contains the patient's parameters, meals and exercises for all 10 subjects in the training population. The file `population_test.json` contains the patient's parameters, meals and exercises for all 5 subjects in the validation population. 
+The data concerning virtual patient populations is located in directory `population`. The file `population_train.json` contains the patient's parameters, meals and exercises for all 10 subjects in the training population. The file `population_test.json` contains the patient's parameters, meals and exercises for all 5 subjects in the validation population.
 
 The code used to generate the populations is also located in directory `population` and can be tested by executing the commands below. Bear in mind that population generation in stochastic, therefore each population generated will be different from one another (including the one used for the simulations).
 
@@ -97,11 +97,11 @@ uv run offline.py   # or
 # python offline.py
 ```
 
-Optimized weight vectors will be saved in `offline/weights`. Finally, go back to the project root and execute the simulated using the pre-trained weights.
+Optimized weight vectors will be saved in `offline/weights`. Finally, go back to the project root and run the simulations using the pre-trained weights.
 
 ``` shell
 cd ..                                 # only if still in offline dir
-uv run main.py --population offline   # for the training population
+uv run main.py --population offline   # offline for the validation population
 # or
 # python main.py --population offline 
 ```
