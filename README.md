@@ -64,7 +64,7 @@ uv run main.py   # or
 
 ## Training Phase Performance and Generalization Performance
 
-To replicate the results from this subsection, execute the commands below. The argument `--population` determines which population will be simulated. Results will be saved in `results_train` for training results and `results_test` for validation results. For more details, execute `uv run main.py --help` (or the python equivalent) to check simulation options.
+To replicate the results from these subsections, execute the commands below. The argument `--population` determines which population will be simulated. Results will be saved in `results_train` for training results and `results_test` for validation results. For more details, execute `uv run main.py --help` (or the python equivalent) to check simulation options.
 
 ``` shell
 uv run main.py --population train   # for the training population
