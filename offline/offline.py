@@ -25,7 +25,9 @@ def calculate_weigths(patient_idx: int) -> dict:
     G = np.array(G)
 
     phi = 100.0
-    Gp = np.linalg.inv(G.T @ G + phi * Gc) @ G.T
+    with np.errstate(divide="ignore", over="ignore", invalid="ignore"):
+        Gp = np.linalg.inv(G.T @ G + phi * Gc)
+        Gp = Gp @ G.T
 
     d = np.array(data["uncertainty"])
     w = Gp @ d

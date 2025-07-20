@@ -180,7 +180,8 @@ def main() -> None:
     for idx, params_ in enumerate(params):
         params_["graphs_dir"] = results_dir / f"sim_{idx}"
 
-    with mp.Pool(processes=5) as pool:
+    cpus = min(mp.cpu_count(), 5)
+    with mp.Pool(processes=cpus) as pool:
         _ = pool.map(run, params)
 
     end = time.perf_counter()
