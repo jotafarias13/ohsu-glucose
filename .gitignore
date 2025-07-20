@@ -170,3 +170,4 @@ cython_debug/
 !population*.json
 !patient*.json
 !q_table*.json
+!requirements.txt
